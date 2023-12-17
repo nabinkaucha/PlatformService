@@ -10,6 +10,7 @@ namespace CommandsService.Endpoints
 
             apiGroup.MapPost("test", (Platform platform) =>
             {
+                Console.WriteLine("--> Request Processed");
                 return TypedResults.Ok("test success");
             });
         }

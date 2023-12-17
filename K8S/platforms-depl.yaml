@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: platformservice
-          image: nabinvirtual/platformservice:latest
+          image: uzumakinabin/platformsservice:latest
 ---
 apiVersion: v1
 kind: Service
