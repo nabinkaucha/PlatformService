@@ -6,7 +6,7 @@ namespace CommandsService.Endpoints
     {
         public static void UsePlatformAPIs(this WebApplication app)
         {
-            RouteGroupBuilder apiGroup = app.MapGroup("/api/Platforms");
+            RouteGroupBuilder apiGroup = app.MapGroup("/api/commands/Platforms");
 
             apiGroup.MapPost("test", (Platform platform) =>
             {
