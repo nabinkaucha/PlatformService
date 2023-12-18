@@ -24,11 +24,11 @@ spec:
                 name: postressecret
                 key: PG_PASSWORD
           volumeMounts:
-          - mountPath: /var/lib/postgresql/data
-            name: postgres-pv-storage
+          - mountPath: /mnt
+            name: postgresdb
       volumes:
       - name: postgresdb
-        PersistentVolumeClaim:
+        persistentVolumeClaim:
           claimName: postgres-claim
 ---
 apiVersion: v1
