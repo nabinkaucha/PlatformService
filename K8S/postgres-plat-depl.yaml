@@ -16,15 +16,19 @@ spec:
         - name: postgresql
           image: postgres:16
           ports:
-            - containerPort: 1433
+            - containerPort: 5432
           env:
-          - name: PG_PASSWORD
+          - name: POSTGRES_DB
+            value: db0
+          - name: POSTGRES_USER
+            value: nabin
+          - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: postressecret
+                name: postgressecret
                 key: PG_PASSWORD
           volumeMounts:
-          - mountPath: /mnt
+          - mountPath: /var/lib/postgresql/data
             name: postgresdb
       volumes:
       - name: postgresdb
@@ -42,8 +46,8 @@ spec:
   ports:
   - name: postgresql
     protocol: TCP
-    port: 1433
-    targetPort: 1433
+    port: 5432
+    targetPort: 5432
 ---
 apiVersion: v1
 kind: Service
@@ -55,5 +59,5 @@ spec:
     app: postgresql
   ports:
   - protocol: TCP
-    port: 1433
-    targetPort: 1433
+    port: 5432
+    targetPort: 5432
