@@ -1,4 +1,6 @@
+using CommandsService.Data;
 using CommandsService.Endpoints;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("InMem"));
+
+// Dependency Injection
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ICommandRepo, CommandRepo>();
 
 var app = builder.Build();
 
@@ -24,6 +32,7 @@ app.UseHttpsRedirection();
 //app.MapControllers();
 
 app.UsePlatformAPIs();
+app.UseCommandsAPIs();
 
 
 app.Run();

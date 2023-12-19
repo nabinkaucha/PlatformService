@@ -1,4 +1,7 @@
-﻿using CommandsService.Models;
+﻿using AutoMapper;
+using CommandsService.Data;
+using CommandsService.DTOs;
+using CommandsService.Models;
 
 namespace CommandsService.Endpoints
 {
@@ -12,6 +15,12 @@ namespace CommandsService.Endpoints
             {
                 Console.WriteLine("--> Request Processed");
                 return TypedResults.Ok("test success");
+            });
+
+            apiGroup.MapGet("/", (ICommandRepo _repo, IMapper _mapper) =>
+            {
+                Console.WriteLine("--> Getting all Platforms");
+                return TypedResults.Ok(_mapper.Map<IEnumerable<PlatformReadDTO>>(_repo.GetAllPlatforms()));
             });
         }
     }
