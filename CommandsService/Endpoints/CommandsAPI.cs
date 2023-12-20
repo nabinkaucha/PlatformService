@@ -23,7 +23,7 @@ namespace CommandsService.Endpoints
         private static IResult GetCommandsForPlatform(int platformId, ICommandRepo _repo, IMapper _mapper)
         {
             Console.WriteLine($"--> Getting commands associated with platform id {platformId}");
-            if (_repo.PlatformExists(platformId))
+            if (!_repo.PlatformExists(platformId))
             {
                 return TypedResults.NotFound();
             }
@@ -33,7 +33,7 @@ namespace CommandsService.Endpoints
         private static IResult GetCommandForPlatform(int platformId, int commandId, ICommandRepo _repo, IMapper _mapper)
         {
             Console.WriteLine($"--> Getting command associated with platform id {platformId} with command id {commandId}");
-            if (_repo.PlatformExists(platformId))
+            if (!_repo.PlatformExists(platformId))
             {
                 return TypedResults.NotFound();
             }
