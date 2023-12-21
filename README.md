@@ -1,6 +1,6 @@
 # Platform Service
 
-This project consists of two services **Platform Service (net7)** and **Command Service (net8)**. Platform service uses PostgreSQL for storage and Command service uses InMemoryDB. **RabbitMQ** is used for asynchronous message passing between two services. **Kubernetes** is used for orchestration of services, database and message broker.
+This project consists of two services **Platform Service (net7)** and **Command Service (net8)**. Platform service uses PostgreSQL for storage and Command service uses InMemoryDB. **RabbitMQ** is used for asynchronous message passing between two services  and **gRPC** for synchronous communication. **Kubernetes** is used for orchestration of services, database and message broker.
 
 ## Environment Setup (Linux/arch)
 * Install dotnet sdk for linux [as shown here](https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install) (We need both .net 7 and .net 8 sdks).
