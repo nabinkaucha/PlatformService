@@ -55,4 +55,4 @@ spec:
   - name: rbmq-ldbl-msg-port
     protocol: TCP
     port: 5672
-    targetPort: 5432
+    targetPort: 5672

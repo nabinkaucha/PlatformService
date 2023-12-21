@@ -5,7 +5,7 @@ using PlatformService.Models;
 
 namespace PlatformService.SyncDataServices.Grpc
 {
-    public class GrpcPlatformService:GrpcPlatform.GrpcPlatformBase
+    public class GrpcPlatformService : GrpcPlatform.GrpcPlatformBase
     {
         private readonly IPlatformRepo _repo;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace PlatformService.SyncDataServices.Grpc
 
             // response.Platform = platforms.Select(_mapper.Map<GrpcPlatformModel>);
 
-            foreach(Platform plat in platforms) 
+            foreach (Platform plat in platforms)
             {
                 response.Platform.Add(_mapper.Map<GrpcPlatformModel>(plat));
             }
