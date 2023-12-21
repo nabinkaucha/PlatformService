@@ -24,6 +24,8 @@ namespace PlatformService.SyncDataServices.Grpc
 
             // response.Platform = platforms.Select(_mapper.Map<GrpcPlatformModel>);
 
+            Console.WriteLine("--> Grpc received.. Getting all platforms");
+
             foreach (Platform plat in platforms)
             {
                 response.Platform.Add(_mapper.Map<GrpcPlatformModel>(plat));

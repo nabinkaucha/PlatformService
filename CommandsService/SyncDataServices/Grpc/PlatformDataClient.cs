@@ -17,13 +17,12 @@ namespace CommandsService.SyncDataServices.Grpc
         }
         public IEnumerable<Platform> ReturnAllPlatforms()
         {
-            Console.WriteLine($"--> Calling Grpc Service {_configuration["GrpcPlatform"]}");
-            GrpcChannel channel = GrpcChannel.ForAddress(_configuration["GrpcPlatform"]);
-            GrpcPlatformClient client = new(channel);
-            GetAllRequest request = new();
-
             try
             {
+                Console.WriteLine($"--> Calling Grpc Service {_configuration["GrpcPlatform"]}");
+                GrpcChannel channel = GrpcChannel.ForAddress(_configuration["GrpcPlatform"]);
+                GrpcPlatformClient client = new(channel);
+                GetAllRequest request = new();
                 PlatformResponse reply = client.GetAllPlatforms(request);
                 return _mapper.Map<IEnumerable<Platform>>(reply.Platform);
             }
